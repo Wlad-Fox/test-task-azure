@@ -1,7 +1,8 @@
 #include <iostream>
-#include "cloud_storage.h"
-#include "credentials.h"
-#include "options_parser.h"
+
+#include <cloud_storage.h>
+#include <credentials.h>
+#include <options_parser.h>
 
 static constexpr char JSON_CREDENTIALS_FILE_PATH[] = "credentials.json";
 

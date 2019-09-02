@@ -2,7 +2,8 @@
 #include <string>
 
 #include <was/blob.h>
-#include "credentials.h"
+
+#include <credentials.h>
 
 
 class CloudStorage

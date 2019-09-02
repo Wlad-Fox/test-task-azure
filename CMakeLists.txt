@@ -35,5 +35,5 @@ file (GLOB_RECURSE APP_SOURCES ${CMAKE_CURRENT_LIST_DIR}/src/*.cpp)
 add_executable (app ${APP_SOURCES})
 
 target_compile_features(app PUBLIC cxx_std_17)
-target_include_directories (app PUBLIC ${THIRD_PARTY_INCLUDES})
+target_include_directories (app PUBLIC ${THIRD_PARTY_INCLUDES} ${CMAKE_CURRENT_LIST_DIR}/include)
 target_link_libraries(app azurestorage stdc++fs)

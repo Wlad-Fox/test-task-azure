@@ -1,6 +1,6 @@
-# test-task-azure
+# Azure test task
 
-Here is the result of completing the test task from one company
+Here is the result of completing the test task from one company. It is not so primitive as usual test tasks so I decided to upload it here so that you could instantly check my skills.
 
 ## Task
 
@@ -13,10 +13,9 @@ Requirements:
 3.  Account name/access key to Azure Storage Account:
 	a.  can be hardcoded
 	b.  command line for account name/key:
-	    --account_name <name> --account_key <key>
+	`--login <name> --password <key>  `
 	* Both account_name/account_key can be stored locally in the same location as application (i.e. in json file).
-	* Application should verify if config json with account_name/account_key exists, i.e.:
-	    application --account_name "qwerty123" --account_key "pass123"
+	* Application should verify if config json with account_name/account_key exists
 4.  Application should support command line with following options:
 	* add data to Azure
 
@@ -48,19 +47,19 @@ Requirements:
 
 You need to have Cmake and C++17 compiler installed.
 
-1. Clone repo to ubuntu machine
+1. Clone repo to ubuntu machine:
     
     `git clone https://github.com/Wlad-Fox/test-task-azure && cd test-task-azure`
-2. Initialize and update submodules
+2. Initialize and update submodules:
     
     `git submodule init && git submodule update`
-3. Run instal_dependencies.sh
+3. Run instal_dependencies.sh:
     
     `bash install_dependencies.sh`
-4. Create build directory and cd inside
+4. Create build directory and cd inside:
     
     `mkdir build && cd build`
-5. Configure cmake and build
+5. Configure cmake and build:
     
     `cmake .. -DCMAKE_BUILD_TYPE=Release`
     `cmake --build .`
@@ -82,3 +81,30 @@ You need to have Cmake and C++17 compiler installed.
 		"password" : "..."
 	}
 	```
+
+## Design decisions
+
+### Testing
+
+As you may notice there is no tests in repo. This is because the system is quite small and there are no plans to change it. It was faster to test all classes manually. In complex projects I always use unit testing for classes that may change in future or that has tricky logic.
+
+### JSON library for simply reading two lines of text
+
+My first idea was to write simple parser for only this two lines "login" and "password". But there are some points against this decision:
+* as it will be json file with configuration, it may contain other values besides "login" and "password", I needed to handle them correctly;
+* possibility of having login and password separately in different json objects like that:
+```
+{
+	"object1" : {
+		"login" : "object1's login"
+	},
+	"object2" : {
+		"password" : "object2's password"
+	}
+}
+```
+taking this into account I've decided to take full-featured json library for this task.
+
+## P.S.
+
+If you think something is bad, feel free to leave the comment or mail to restfoks@gmail.com, I would be grateful for any feedback!
