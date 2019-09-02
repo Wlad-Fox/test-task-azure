@@ -1,6 +1,6 @@
 # test-task-azure
 
-Hello! Here is the result of completing one of the test tasks i've got.
+Here is the result of completing the test task from one company
 
 ## Task
 
@@ -44,7 +44,9 @@ Requirements:
 	*  max. file size 2MB
 	*  there is no need to handle scenario when user try to upload file with the same name, file names are unique
 
-## How-to-run
+## How to run
+
+You need to have Cmake and C++17 compiler installed.
 
 1. Clone repo to ubuntu machine
     
