@@ -10,7 +10,6 @@ OptionsParser::OptionsParser(int argc, char **argv)
     options.add_options()
             ("a,add", "", cxxopts::value<std::string>())
             ("d,delete", "", cxxopts::value<std::string>())
-            ("l,logs", "")
             ("login", "", cxxopts::value<std::string>())
             ("password", "", cxxopts::value<std::string>());
     try {
@@ -19,8 +18,6 @@ OptionsParser::OptionsParser(int argc, char **argv)
         {
             if (_option != NOT_SET)
             {
-                if (arg.key() == "logs")
-                    _option = this->LOGS;
                 if (arg.key() == "add") {
                     _path = arg.value();
                     _option = this->ADD;

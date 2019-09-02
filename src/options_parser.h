@@ -17,7 +17,6 @@ public:
         NOT_SET = 0,
         ADD,
         DELETE,
-        LOGS
     };
     Command command();
     std::string path();
