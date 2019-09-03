@@ -2,6 +2,10 @@
 
 Here is the result of completing the test task from one company. It is not so primitive as usual test tasks so I decided to upload it here so that you could instantly check my skills.
 
+There is no complex code in terms of algorithms. 
+
+Before completing this task I had no experience with Azure.
+
 ## Task
 
 Using Azure SDK for C++ (https://github.com/Azure/azure-storage-cpp) please create application which allows to communicate with Azure Blob Storage.  
@@ -11,9 +15,9 @@ Requirements:
 1.  Platform - Windows or Linux or MacOS
 2.  Create appropriate Storage Account in Azure
 3.  Account name/access key to Azure Storage Account:
-	a.  can be hardcoded
-	b.  command line for account name/key:
-	`--login <name> --password <key>  `
+	a.	can be hardcoded
+	b.	command line for account name/key:
+	`--login <name> --password <key>`
 	* Both account_name/account_key can be stored locally in the same location as application (i.e. in json file).
 	* Application should verify if config json with account_name/account_key exists
 4.  Application should support command line with following options:
@@ -63,6 +67,13 @@ You need to have Cmake and C++17 compiler installed.
     
     `cmake .. -DCMAKE_BUILD_TYPE=Release`
     `cmake --build .`
+
+6. Get Azure storage account access credentials
+
+	If you don't have Azure account create it following instructions [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).  
+	[Here](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string) you can find how to get storage account's name and key.
+
+
 6. Run the app file with following command line arguments:
 
 	```
@@ -72,7 +83,7 @@ You need to have Cmake and C++17 compiler installed.
 	--password <password> (azure storage account key)  
 	```
 
-	if login and password are omitted, they're taken from file credentials.json:
+	if login and password arguments are omitted, they're taken from file credentials.json, so you need to create it within app's directory:
 	
 	```
 	//credentials.json
