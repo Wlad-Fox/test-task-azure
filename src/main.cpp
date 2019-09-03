@@ -6,29 +6,31 @@
 
 static constexpr char JSON_CREDENTIALS_FILE_PATH[] = "credentials.json";
 
-int main(int argc, char *argv[])
-{
-    OptionsParser p(argc, argv);
-    if (auto err = p.parsing_error())
-    {
-        std::cout << err.value();
+int main(int argc, char *argv[]) {
+    OptionsParser parser;
+    parser.parse(argc, argv);
+    if (!parser.parse(argc, argv)) {
+        std::cout << "Error while parsing arguments!\n";
         return 1;
     }
 
-    Credentials creds = p.credentials() ?
-            p.credentials().value() :
-            Credentials::from_json_file(JSON_CREDENTIALS_FILE_PATH);
+    Credentials creds = !parser.credentials().empty() ?
+                        parser.credentials() :
+                        Credentials::from_json_file(JSON_CREDENTIALS_FILE_PATH);
+    if (creds.empty()) {
+        std::cout << "Failed to read credentials from file\n";
+        return 1;
+    }
 
     CloudStorage cloud(creds);
 
     bool result = false;
-    switch (p.command())
-    {
-        case p.ADD:
-            result = cloud.add_file(p.path());
+    switch (parser.command()) {
+        case parser.ADD:
+            result = cloud.add_file(parser.path());
             break;
-        case p.DELETE:
-            result = cloud.delete_file(p.path());
+        case parser.DELETE:
+            result = cloud.delete_file(parser.path());
             break;
     }
 
