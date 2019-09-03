@@ -7,7 +7,7 @@
 
 
 CloudStorage::CloudStorage(Credentials credentials, bool quiet)
-    : _container(_create_container_if_not_exist(credentials.login, credentials.key, "eskere"))
+    : _container(_create_container_if_not_exist(credentials.login, credentials.key, CONTAINER_NAME))
     , _quiet(quiet)
 {
 }

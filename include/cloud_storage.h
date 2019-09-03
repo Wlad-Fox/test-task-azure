@@ -8,6 +8,7 @@
 
 class CloudStorage
 {
+    static constexpr auto CONTAINER_NAME = "test-task-container";
 public:
     CloudStorage(Credentials credentials, bool quiet = false);
     bool add_file(std::string path);
